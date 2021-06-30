@@ -8,8 +8,7 @@ import { AppComponent } from './app.component';
 import {ToastrModule} from 'ngx-toastr';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -31,14 +30,14 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
-import {TabsModule} from 'ngx-bootstrap/tabs';
-
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 import { NgxUiLoaderModule, SPINNER } from "ngx-ui-loader";
 
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,9 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -66,6 +67,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     NgxUiLoaderModule
   ],

@@ -19,7 +19,7 @@ export class AccountService {
 
   login(model: any){
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
-      map((response) => {
+      map((response: User) => {
         const user = response;
         if (user) {
           this.setCurrentUser(user);
@@ -45,6 +45,6 @@ export class AccountService {
 
   logout(){
     localStorage.removeItem('user');
-    this.currentUserSource.next();
+    this.currentUserSource.next(null);
   }
 }
