@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { NgxUiLoaderService, SPINNER } from 'ngx-ui-loader';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Injectable({
   providedIn: 'root'

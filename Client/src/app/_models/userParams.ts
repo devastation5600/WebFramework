@@ -5,7 +5,7 @@ export class Userparams {
   minAge = 18;
   maxAge = 99;
   pageNumber = 1;
-  pageSize = 2;
+  pageSize = 10;
   orderBy = 'lastActive'
 
 
