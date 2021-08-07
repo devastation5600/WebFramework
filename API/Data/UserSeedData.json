@@ -2,7 +2,7 @@
     {
         "UserName": "Young",
         "Gender": "female",
-        "DateOfBirth": "1965-07-10",
+        "DateofBirth": "1965-07-10",
         "KnownAs": "Young",
         "Created": "2019-04-12",
         "LastActive": "2020-06-19",
@@ -21,7 +21,7 @@
     {
         "UserName": "Elisabeth",
         "Gender": "female",
-        "DateOfBirth": "1965-08-23",
+        "DateofBirth": "1965-08-23",
         "KnownAs": "Elisabeth",
         "Created": "2019-08-21",
         "LastActive": "2020-05-18",
@@ -40,7 +40,7 @@
     {
         "UserName": "Twila",
         "Gender": "female",
-        "DateOfBirth": "1968-01-28",
+        "DateofBirth": "1968-01-28",
         "KnownAs": "Twila",
         "Created": "2019-05-28",
         "LastActive": "2020-06-07",
@@ -59,7 +59,7 @@
     {
         "UserName": "Melisa",
         "Gender": "female",
-        "DateOfBirth": "1992-04-22",
+        "DateofBirth": "1992-04-22",
         "KnownAs": "Melisa",
         "Created": "2019-09-15",
         "LastActive": "2020-06-24",
@@ -78,7 +78,7 @@
     {
         "UserName": "Augusta",
         "Gender": "female",
-        "DateOfBirth": "1962-06-06",
+        "DateofBirth": "1962-06-06",
         "KnownAs": "Augusta",
         "Created": "2019-03-03",
         "LastActive": "2020-05-05",
@@ -97,7 +97,7 @@
     {
         "UserName": "Key",
         "Gender": "male",
-        "DateOfBirth": "1987-06-04",
+        "DateofBirth": "1987-06-04",
         "KnownAs": "Key",
         "Created": "2019-09-01",
         "LastActive": "2020-05-04",
@@ -116,7 +116,7 @@
     {
         "UserName": "Johnston",
         "Gender": "male",
-        "DateOfBirth": "1989-05-10",
+        "DateofBirth": "1989-05-10",
         "KnownAs": "Johnston",
         "Created": "2020-04-11",
         "LastActive": "2020-05-07",
@@ -135,7 +135,7 @@
     {
         "UserName": "Goff",
         "Gender": "male",
-        "DateOfBirth": "1989-07-20",
+        "DateofBirth": "1989-07-20",
         "KnownAs": "Goff",
         "Created": "2020-03-14",
         "LastActive": "2020-05-08",
@@ -154,7 +154,7 @@
     {
         "UserName": "Hansen",
         "Gender": "male",
-        "DateOfBirth": "1954-07-27",
+        "DateofBirth": "1954-07-27",
         "KnownAs": "Hansen",
         "Created": "2020-02-13",
         "LastActive": "2020-06-18",
@@ -173,7 +173,7 @@
     {
         "UserName": "Rojas",
         "Gender": "male",
-        "DateOfBirth": "1960-01-25",
+        "DateofBirth": "1960-01-25",
         "KnownAs": "Rojas",
         "Created": "2019-03-05",
         "LastActive": "2020-05-07",

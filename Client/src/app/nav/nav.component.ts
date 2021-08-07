@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit (): void {
-     console.log(this.accountService.currentUser$);
+    //  console.log(this.accountService.currentUser$);
   }
 
   login(){

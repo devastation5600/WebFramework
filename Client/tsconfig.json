@@ -6,7 +6,7 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
@@ -26,6 +26,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,
     "strictInputAccessModifiers": false,
-    "strictTemplates": false
+    "strictTemplates": true
   }
 }
