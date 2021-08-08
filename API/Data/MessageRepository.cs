@@ -63,14 +63,14 @@ namespace API.Data
         }
 
         public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername,
-             string recipientUsername)
+             string RecipientUsername)
         {
             var messages = await _context.Messages
                 .Include(u => u.Sender).ThenInclude(p => p.Photos)
                 .Include(u => u.Recipient).ThenInclude(p => p.Photos)
                 .Where(m => m.Recipient.UserName == currentUsername && m.RecipientDeleted == false
-                        && m.Sender.UserName == recipientUsername
-                        || m.Recipient.UserName == recipientUsername
+                        && m.Sender.UserName == RecipientUsername
+                        || m.Recipient.UserName == RecipientUsername
                         && m.Sender.UserName == currentUsername && m.SenderDeleted == false
                 )
                 .OrderBy(m => m.MessageSent)
