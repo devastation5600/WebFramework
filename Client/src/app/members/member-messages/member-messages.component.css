@@ -17,3 +17,14 @@
 .rounded-circle {
     max-height: 50px;
 }
+
+
+.chat::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
