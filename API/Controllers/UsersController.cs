@@ -22,7 +22,8 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
         private readonly IUnitOfWork _unitOfWork;
-        public UsersController(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService)
+        public UsersController(IUnitOfWork unitOfWork, IMapper mapper,
+            IPhotoService photoService)
         {
             _unitOfWork = unitOfWork;
             _photoService = photoService;
@@ -30,33 +31,35 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userparams)
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
             var gender = await _unitOfWork.UserRepository.GetUserGender(User.GetUsername());
-            userparams.CurrentUsername = User.GetUsername();
+            userParams.CurrentUsername = User.GetUsername();
 
-            if (string.IsNullOrEmpty(userparams.Gender))
-                userparams.Gender = gender == "male" ? "female" : "male";
+            if (string.IsNullOrEmpty(userParams.Gender))
+                userParams.Gender = gender == "male" ? "female" : "male";
 
-            var users = await _unitOfWork.UserRepository.GetMembersAsync(userparams);
+            var users = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize,
-            users.TotalCount, users.TotalPages);
+                users.TotalCount, users.TotalPages);
 
             return Ok(users);
         }
 
-        //api/users/id
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _unitOfWork.UserRepository.GetMemberAsync(username);
-
+            var currentUsername = User.GetUsername();
+            return await _unitOfWork.UserRepository.GetMemberAsync(username,
+                isCurrentUser: currentUsername == username
+            );
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
+
             var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
             _mapper.Map(memberUpdateDto, user);
@@ -64,6 +67,7 @@ namespace API.Controllers
             _unitOfWork.UserRepository.Update(user);
 
             if (await _unitOfWork.Completed()) return NoContent();
+
             return BadRequest("Failed to update user");
         }
 
@@ -82,18 +86,14 @@ namespace API.Controllers
                 PublicId = result.PublicId
             };
 
-            if (user.Photos.Count == 0)
-            {
-                photo.IsMain = true;
-            }
-
             user.Photos.Add(photo);
+
             if (await _unitOfWork.Completed())
             {
                 return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
             }
 
-            return BadRequest("Problem adding photo");
+            return BadRequest("Problem addding photo");
         }
 
         [HttpPut("set-main-photo/{photoId}")]
@@ -103,7 +103,7 @@ namespace API.Controllers
 
             var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
 
-            if (photo.IsMain) return BadRequest("This is already you main photo");
+            if (photo.IsMain) return BadRequest("This is already your main photo");
 
             var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
             if (currentMain != null) currentMain.IsMain = false;
@@ -135,7 +135,7 @@ namespace API.Controllers
 
             if (await _unitOfWork.Completed()) return Ok();
 
-            return BadRequest("Failed to delete photo");
+            return BadRequest("Failed to delete the photo");
         }
     }
 }
