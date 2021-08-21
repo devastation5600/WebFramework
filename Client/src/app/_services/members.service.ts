@@ -66,8 +66,6 @@ export class MembersService {
     if (member) {
       return of(member);
     }
-
-    console.log(member);
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
@@ -97,18 +95,5 @@ export class MembersService {
         this.memberCache.set(Object.values(userParams).join('-'),response);
         return response;
     }));
-}
-
-private getPaginatedResult<T>(url, params) {
-  const  paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
-  return this.http.get<T>(this.baseUrl + 'users', { observe: 'response', params }).pipe(
-    map(response => {
-      paginatedResult.result = response.body;
-      if (response.headers.get('Pagination') !== null) {
-        paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-      }
-      return paginatedResult;
-    })
-  );
 }
 }

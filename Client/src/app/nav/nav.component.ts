@@ -19,12 +19,13 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    //  console.log(this.accountService.currentUser$);
+     console.log(this.accountService.currentUser$);
   }
 
   login(){
     this.accountService.login(this.model).subscribe(response => {
       this.router.navigateByUrl('/members');
+      console.log(response);
     })
   }
 
